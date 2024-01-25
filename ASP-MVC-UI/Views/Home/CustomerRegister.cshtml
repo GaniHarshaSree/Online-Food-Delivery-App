@@ -1,0 +1,163 @@
+﻿@model ASP_MVC_UI.Customer
+
+@{
+    ViewBag.Title = "CustomerRegister";
+}
+
+<h2>CustomerRegistration</h2>
+<br />
+
+<style>
+    h2 {
+        text-align: center;
+        color: white;
+        text-underline-offset: auto;
+        background-color: tomato;
+    }
+
+    h4 {
+        border-radius: 6px;
+        margin: 0;
+        padding: 10px;
+        font-weight: bold;
+        color: Tomato;
+    }
+
+    body {
+        background-image: url('/Pictures/pexels-photo-1640773.jpeg');
+        background-size: cover;
+        background-position: center;
+    }
+
+    .form-horizontal {
+        font-size: 12px;
+        font-weight: bold;
+        align-content: center;
+        width: 500px;
+        height: 550px;
+        background-color: white;
+        color: black;
+        box-sizing: border-box;
+        border-radius: 10px;
+    }
+
+    .button1 {
+        padding: 11px 20px 11px 20px;
+        border: none;
+        font-family: 'Times New Roman', Times, serif;
+        font-weight: bolder;
+        font-size: 20px;
+        align-content: center;
+        background-color: orangered;
+        border-radius: 3px 4px;
+        color: white;
+        cursor: pointer;
+    }
+
+    .button2 {
+        padding: 12px 15px;
+        border: none;
+        margin-top: 4px;
+        font-family: 'Times New Roman', Times, serif;
+        font-weight: bold;
+        font-size: 20px;
+        align-content: center;
+        background-color: black;
+        border-radius: 3px 4px;
+        color: white;
+        /*cursor: pointer;*/
+    }
+
+    .btn-tomato {
+        background-color: tomato;
+        color: white; /* Set text color to white for better visibility */
+        text-decoration: none; /* Remove underline */
+        padding: 10px 20px; /* Adjust padding as needed */
+        border-radius: 5px; /* Add border radius for rounded corners */
+    }
+
+    .btn-warning {
+        color: #fff;
+        background-color: tomato;
+        border-color: tomato;
+        padding: 10px 20px;
+        text-decoration: none;
+        display: inline-block;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+        margin-bottom: 100px;
+    }
+
+        .btn-warning:hover {
+            background-color: tomato;
+            border-color: #d58512;
+        }
+</style>
+
+
+<center>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Register Here</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group" style="margin-bottom: 20px;">
+                @Html.LabelFor(model => model.CustEmail, "Enter Your Email Address", htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.EditorFor(model => model.CustEmail, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CustEmail, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 20px;">
+                @Html.LabelFor(model => model.CustPhone, "Enter Your Mobile number", htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.EditorFor(model => model.CustPhone, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CustPhone, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 20px;">
+                @Html.LabelFor(model => model.CustFName, "Enter Your FirstName", htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.EditorFor(model => model.CustFName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CustFName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 20px;">
+                @Html.LabelFor(model => model.CustLName, "Enter Your LastName", htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.EditorFor(model => model.CustLName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CustLName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CustPassword, "Enter Your Password", htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.EditorFor(model => model.CustPassword, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CustPassword, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <br>
+
+            @Html.ActionLink("Register", "CustomerLogin", null, new { @class = "btn  btn-tomato" })
+            @*<input type="submit" value="Login" class="btn btn-default" />*@
+            @*<input type="submit" name="" value="Login" />*@
+
+
+        </div>
+    }
+
+    <br />
+    @Html.ActionLink("Back to Home", "Index", null, new { @class = "btn btn-warning" })
+
+
+</center>
+
